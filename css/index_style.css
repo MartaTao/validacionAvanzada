@@ -1,0 +1,27 @@
+body{
+    background-image: url(../images/fondo.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-family: "Potta One", cursive;
+    color:#fff;
+}
+h1{
+    text-align: center;
+}
+.formulario{
+    position: relative;
+    margin: auto;
+    max-width: 500px;
+}
+input{
+    border-radius: 5px;
+    width: 400px;
+    height: 30px;
+    border:solid 2px #696B74;
+}
+button{
+    font-family: "Potta One", cursive;
+    color:#000;
+    background-color: #fff;
+    border-radius: 7px;
+}

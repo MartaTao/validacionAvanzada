@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/registrarse_style.css">
+    <title>Registrarse</title>
+</head>
+<body>
+    <h1>Vive la Alta Gastronomía</h1>
+    <div class="formulario">
+        <form class="registro">
+            <label>Nombre</label><label>Apellidos</label><br>
+            <input type="text" name="nombre" ><input type="text" name="apellidos" ><br>
+            <br>
+            <label>Correo</label><label>Contraseña</label><br>
+            <input type="text" name="correo" placeholder="ejemplo@holi.com"class="correo" id="email">
+            <input type="text" name="contraseña" >
+            <p class="errorCorreo">El correo introducido no es correcto</p>
+            <label>Móvil</label><label for="comunidad">Comunidad</label><br>
+            <input type="text" name="movil" placeholder=" 666666666 o 666 666 666 o 666 66 66 66"class="movil" id="movil">
+            <select id="comunidad" name="comunidad">
+                <option value="Andalucía">Andalucía</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Valencia">Valencia</option>
+                <option value="Castilla">Castilla</option>
+                <option value="Aragón">Aragón</option>
+            </select>
+            <p class="errorMovil">El formáto del número introducido no es correcto</p>
+            <label>Observaciones</label><br>
+            <textarea type="text" name="observaciones"></textarea><br>
+            <button class="btn" id="siguiente" disabled>Siguiente</button>
+        </form>
+    </div>
+    <script src="../js/registro.js"></script>
+</body>
+</html>
