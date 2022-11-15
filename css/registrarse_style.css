@@ -25,6 +25,7 @@ select{
     height: 30px;
     border:solid 2px #696B74;
     margin-right: 20px;
+    cursor: pointer;
 }
 .campos{
     margin-right: 270px;

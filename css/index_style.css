@@ -9,9 +9,8 @@ h1{
     text-align: center;
 }
 .formulario{
-    position: relative;
-    margin: auto;
-    max-width: 500px;
+    display:flex;
+    justify-content: center;
 }
 input{
     border-radius: 5px;
