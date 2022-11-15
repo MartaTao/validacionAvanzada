@@ -13,14 +13,13 @@
     <h1>Vive la Alta Gastronomía</h1>
     <div class="formulario">
         <form class="registro">
-            <label>Nombre</label><label>Apellidos</label><br>
-            <input type="text" name="nombre" class="nombre"><input type="text" name="apellidos" ><br>
-            <br>
-            <label>Correo</label><label>Contraseña</label><br>
-            <input type="text" name="correo" placeholder="ejemplo@holi.com"class="correo" id="email">
-            <input type="text" name="contraseña" >
-            <p class="errorCorreo">El correo introducido no es correcto</p>
-            <label>Móvil</label><label for="comunidad">Comunidad</label><br>
+            <label class="campos">Nombre</label><label class="campos">Apellidos</label><br>
+            <input type="text" name="nombre" class="nombre"><input type="text" name="apellidos" class="apellidos"><br>
+            <label class="errorNombre">Introduce solo letras</label><label class="errorApellidos">Introduce solo letras</label><br>
+            <label class="campos">Correo</label><label class="campos">Contraseña</label><br>
+            <input type="text" name="correo" placeholder="ejemplo@holi.com"class="correo" id="email"><input type="text" name="contraseña" placeholder="8-15 caracteres 1 mayus 1 num 1 caracter especial" class="password"><br>
+            <label class="errorCorreo">El correo introducido no es correcto</label><label class="errorCon">Formato incorrecto</label><br>
+            <label class="campos">Móvil</label><label for="comunidad" class="campos">Comunidad</label><br>
             <input type="text" name="movil" placeholder=" 666666666 o 666 666 666 o 666 66 66 66"class="movil" id="movil">
             <select id="comunidad" name="comunidad">
                 <option value="Andalucía">Andalucía</option>
@@ -28,8 +27,8 @@
                 <option value="Valencia">Valencia</option>
                 <option value="Castilla">Castilla</option>
                 <option value="Aragón">Aragón</option>
-            </select>
-            <p class="errorMovil">El formáto del número introducido no es correcto</p>
+            </select><br>
+            <label class="errorMovil">El formáto del número introducido no es correcto</label><br>
             <label>Observaciones</label><br>
             <textarea type="text" name="observaciones"></textarea><br>
             <button class="btn" id="siguiente">Siguiente</button>

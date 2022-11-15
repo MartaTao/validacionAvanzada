@@ -4,7 +4,6 @@ let campos={
     correo: false,
     contraseña: false,
     movil: false,
-    comunidad: false,
 }
 function $(selector){
     return document.querySelector(selector);
@@ -24,7 +23,7 @@ function validar_correo(){
         $("#email").classList.remove("incorrecto");
         $(".errorCorreo").classList.remove("active");
         $("#email").classList.add("correcto");
-        correo=true;
+        campos.correo=true;
     }
 }
 $('.movil').addEventListener('keyup',()=>{
@@ -41,7 +40,7 @@ function validar_movil(){
         $("#movil").classList.remove("incorrecto");
         $(".errorMovil").classList.remove("active");
         $("#movil").classList.add("correcto");
-        movil=true;
+        campos.movil=true;
     }
 }
 $('.nombre').addEventListener('keyup',()=>{
@@ -51,15 +50,54 @@ function validar_nombre(){
     let NOMBRE_REGEX=/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
     let nombre=$(".nombre").value;
     if(!nombre.match(NOMBRE_REGEX)){
-        console.log("eso no es uan letra");
+        $(".nombre").classList.remove("correcto");
+        $(".nombre").classList.add("incorrecto");
+        $(".errorNombre").classList.add("active");
     }else{
-        nombre=true;
+        $(".nombre").classList.remove("incorrecto");
+        $(".errorNombre").classList.remove("active");
+        $(".nombre").classList.add("correcto");
+        campos.nombre=true;
+    }
+}
+$('.apellidos').addEventListener('keyup',()=>{
+    validar_apellidos()
+})
+function validar_apellidos(){
+    let APELLIDOS_REGEX=/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
+    let apellidos=$(".apellidos").value;
+    if(!apellidos.match(APELLIDOS_REGEX)){
+        $(".apellidos").classList.remove("correcto");
+        $(".apellidos").classList.add("incorrecto");
+        $(".errorApellidos").classList.add("active");
+    }else{
+        $(".apellidos").classList.remove("incorrecto");
+        $(".errorApellidos").classList.remove("active");
+        $(".apellidos").classList.add("correcto");
+        campos.apellidos=true;
+    }
+}
+$('.password').addEventListener('keyup',()=>{
+    validar_password()
+})
+function validar_password(){
+    let PASSWORD_REGEX= /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/;
+    let password=$(".password").value;
+    if(!password.match(PASSWORD_REGEX)){
+        $(".password").classList.remove("correcto");
+        $(".password").classList.add("incorrecto");
+        $(".errorCon").classList.add("active");
+    }else{
+        $(".password").classList.remove("incorrecto");
+        $(".errorCon").classList.remove("active");
+        $(".password").classList.add("correcto");
+        campos.contraseña=true;
     }
 }
 $('#siguiente').addEventListener('click',(e)=>{
     //window.location.replace("../html/registro.html");
     e.preventDefault();
-    if(campos.nombre && campos.apellidos && campos.correo && campos.contraseña && campos.movil && campos.comunidad){
+    if(campos.nombre && campos.apellidos && campos.correo && campos.contraseña && campos.movil){
         window.open("../html/suscripcion.html");
     }
     

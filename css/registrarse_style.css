@@ -16,7 +16,7 @@ input{
     border-radius: 5px;
     width: 300px;
     height: 30px;
-    border:solid 2px #696B74;
+    border:solid 2px #ecc572;
     margin-right: 20px;
 }
 select{
@@ -26,13 +26,33 @@ select{
     border:solid 2px #696B74;
     margin-right: 20px;
 }
+.campos{
+    margin-right: 270px;
+}
+textarea{
+    width: 620px;
+    height: 200px;
+    resize: none;
+}
+button{
+    font-family: "Potta One", cursive;
+    color:#000;
+    background-color: #fff;
+    border-radius: 7px;
+}
 .correo.incorrecto{
     border:solid 2px red;
     background-color: lightcoral;
+    background-image: url("../images/wrong.png");
+    background-repeat: no-repeat;
+    background-position: right;
 }
 .correo.correcto{
     border:solid 2px green;
     background-color: lightgreen;
+    background-image: url("../images/correct.png");
+    background-repeat: no-repeat;
+    background-position: right;
 }
 .errorCorreo{
     margin-top: 0px;
@@ -48,10 +68,16 @@ select{
 .movil.incorrecto{
     border:solid 2px red;
     background-color: lightcoral;
+    background-image: url("../images/wrong.png");
+    background-repeat: no-repeat;
+    background-position: right;
 }
 .movil.correcto{
     border:solid 2px green;
     background-color: lightgreen;
+    background-image: url("../images/correct.png");
+    background-repeat: no-repeat;
+    background-position: right;
 }
 .errorMovil{
     margin-top: 0px;
@@ -64,17 +90,83 @@ select{
     visibility: visible;
     color:red;
 }
-label{
-    margin-right: 270px;
+.nombre.incorrecto{
+    border:solid 2px red;
+    background-color: lightcoral;
+    background-image: url("../images/wrong.png");
+    background-repeat: no-repeat;
+    background-position: right;
 }
-textarea{
-    width: 620px;
-    height: 200px;
-    resize: none;
+.nombre.correcto{
+    border:solid 2px green;
+    background-color: lightgreen;
+    background-image: url("../images/correct.png");
+    background-repeat: no-repeat;
+    background-position: right;
 }
-button{
-    font-family: "Potta One", cursive;
-    color:#000;
-    background-color: #fff;
-    border-radius: 7px;
+.errorNombre{
+    margin-top: 0px;
+    margin-bottom: 3px;
+    visibility: hidden;
+}
+.errorNombre.active{
+    margin-top: 0px;
+    margin-bottom: 3px;
+    visibility: visible;
+    color:red;
+}
+
+.apellidos.incorrecto{
+    border:solid 2px red;
+    background-color: lightcoral;
+    background-image: url("../images/wrong.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.apellidos.correcto{
+    border:solid 2px green;
+    background-color: lightgreen;
+    background-image: url("../images/correct.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.errorApellidos{
+    margin-top: 0px;
+    margin-bottom: 3px;
+    margin-left: 150px;
+    visibility: hidden;
+}
+.errorApellidos.active{
+    margin-top: 0px;
+    margin-bottom: 3px;
+    visibility: visible;
+    color:red;
+    margin-left: 150px;
+}
+.password.incorrecto{
+    border:solid 2px red;
+    background-color: lightcoral;
+    background-image: url("../images/wrong.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.password.correcto{
+    border:solid 2px green;
+    background-color: lightgreen;
+    background-image: url("../images/correct.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.errorCon{
+    margin-top: 0px;
+    margin-bottom: 3px;
+    margin-left: 150px;
+    visibility: hidden;
+}
+.errorCon.active{
+    margin-top: 0px;
+    margin-bottom: 3px;
+    visibility: visible;
+    color:red;
+    margin-left: 13px;
 }
