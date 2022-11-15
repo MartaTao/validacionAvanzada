@@ -5,6 +5,9 @@ body{
     font-family: "Potta One", cursive;
     color:#fff;
 }
+.fuente{
+    text-align: center;
+}
 h1{
     text-align: center;
 }
@@ -27,9 +30,9 @@ h1{
 #basico{
     position: relative;
     width: 300px;
-    height: 700px;
+    height: 600px;
     margin-right: 20px;
-    margin-top: 100px;
+    margin-top: 150px;
     background-color: #66a329;
 }
 #iniciado::before{
@@ -46,9 +49,9 @@ h1{
 #iniciado{
     position: relative;
     width: 300px;
-    height: 700px;
+    height: 600px;
     margin-right: 20px;
-    margin-top: 100px;
+    margin-top: 150px;
     background-color: #ffad42;
 }
 #intermedio::before{
@@ -65,9 +68,9 @@ h1{
 #intermedio{
     position: relative;
     width: 300px;
-    height: 700px;
+    height: 600px;
     margin-right: 20px;
-    margin-top: 100px;
+    margin-top: 150px;
     background-color: #e31342;
 }
 #experto::before{
@@ -84,9 +87,9 @@ h1{
 #experto{
     position: relative;
     width: 300px;
-    height: 700px;
+    height: 600px;
     margin-right: 20px;
-    margin-top: 100px;
+    margin-top: 150px;
     background-color: #49c1f6;
 }
 #sibarita::before{
@@ -103,9 +106,9 @@ h1{
 #sibarita{
     position: relative;
     width: 300px;
-    height: 700px;
+    height: 600px;
     margin-right: 20px;
-    margin-top: 100px;
+    margin-top: 150px;
     background-color: #8f8bdc;
 }
 .paquete{
@@ -113,7 +116,7 @@ h1{
     justify-content: center;
 }
 .circulo{
-    margin-top: -120px;
+    margin-top: -130px;
     width: 250px;
     height: 250px;
     background-color: #fff;
@@ -154,20 +157,47 @@ h1{
     position:absolute;
     margin-top: 160px;;
     text-align: center;
+    font-family: 'Alice';
 }
+
 h2{
+    font-family: 'Patua One';
     font-size: 40px;
 }
-p{
-    font-size: 20px;
-}
 .infoCompra{
-    margin-top: 500px;
+    margin-top: 450px;
 }
 .comprar{
     color:#000;
     text-align: center;
+    border-radius: 20px;
+    width: 150px;
+    cursor: pointer;
+}
+#gratis{
     background-color: #b2e084;
     border: solid 2px #8cd147;
-    border-radius: 20px;
+}
+#treinta{
+    background-color: #f4cf72;
+    border: solid 2px #ad762f;
+}
+#cincuenta{
+    background-color: #e45273;
+    border: solid 2px #8c0c29;
+}
+#noventa{
+    background-color: #84d4f8;
+    border: solid 2px #30a5e8;
+}
+#cientoveinte{
+    background-color: #d4baf7;
+    border: solid 2px #aa75f0;
+}
+.footer{
+    margin-top: 20px;
+}
+.logo{
+    display: block;
+    margin:auto;
 }

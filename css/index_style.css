@@ -24,3 +24,10 @@ button{
     background-color: #fff;
     border-radius: 7px;
 }
+.footer{
+    margin-top: 30px;
+}
+.logo{
+    display: block;
+    margin:auto;
+}

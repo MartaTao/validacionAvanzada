@@ -171,3 +171,10 @@ button{
     color:red;
     margin-left: 13px;
 }
+.footer{
+    margin-top: 30px;
+}
+.logo{
+    display: block;
+    margin:auto;
+}
