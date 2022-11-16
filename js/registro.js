@@ -108,10 +108,9 @@ $('#basico').addEventListener('click',()=>{
     infoCuenta.suscripcion="basico";
     console.log(contadorCuenta)
     localStorage.setItem(`cuenta${contadorCuenta}`,JSON.stringify(infoCuenta));
-    console.log(localStorage.getItem(`cuenta${contadorCuenta}`));
     let aumentaNumCuenta=contadorCuenta++;
     document.cookie=`contador=${aumentaNumCuenta};`
-    console.log(document.cookie);
+    localStorage.setItem("numCuentas",`${contadorCuenta}`);
 })
 function getCookie(name) {
     const value = `; ${document.cookie}`;
