@@ -109,7 +109,7 @@ $('#basico').addEventListener('click',()=>{
     console.log(contadorCuenta)
     localStorage.setItem(`cuenta${contadorCuenta}`,JSON.stringify(infoCuenta));
     let aumentaNumCuenta=contadorCuenta++;
-    document.cookie=`contador=${aumentaNumCuenta};`
+    document.cookie=`contador=${aumentaNumCuenta}`
     localStorage.setItem("numCuentas",`${contadorCuenta}`);
 })
 function getCookie(name) {
