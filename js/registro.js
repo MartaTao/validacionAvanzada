@@ -1,10 +1,14 @@
-let campos={
-    nombre:false,
-    apellidos:false,
-    correo: false,
-    contraseña: false,
-    movil: false,
+let infoCuenta={
+    nombre:"",
+    apellidos:"",
+    correo: "",
+    contraseña: "",
+    movil: "",
+    observaciones:"",
+    suscripcion:"",
 }
+document.cookie="contador";
+let contadorCuenta=getCookie("contador");
 function $(selector){
     return document.querySelector(selector);
 }
@@ -23,16 +27,16 @@ function validar_correo(){
         $("#email").classList.remove("incorrecto");
         $(".errorCorreo").classList.remove("active");
         $("#email").classList.add("correcto");
-        campos.correo=true;
+        infoCuenta.correo=email;
     }
 }
-$('.movil').addEventListener('keyup',()=>{
+$('#movil').addEventListener('keyup',()=>{
     validar_movil()
 })
 function validar_movil(){
     var numtel = document.getElementById("movil").value;
     var MOVIL_REGEX= /^\d{9}|\d{3} \d{3} \d{3}|\d{3} \d{2} \d{2} \d{2}/;
-    if(!numtel.match(MOVIL_REGEX)&&numtel.length){
+    if(!numtel.match(MOVIL_REGEX)){
         $("#movil").classList.remove("correcto");
         $("#movil").classList.add("incorrecto");
         $(".errorMovil").classList.add("active");
@@ -40,7 +44,7 @@ function validar_movil(){
         $("#movil").classList.remove("incorrecto");
         $(".errorMovil").classList.remove("active");
         $("#movil").classList.add("correcto");
-        campos.movil=true;
+        infoCuenta.movil=numtel;
     }
 }
 $('.nombre').addEventListener('keyup',()=>{
@@ -57,7 +61,7 @@ function validar_nombre(){
         $(".nombre").classList.remove("incorrecto");
         $(".errorNombre").classList.remove("active");
         $(".nombre").classList.add("correcto");
-        campos.nombre=true;
+        infoCuenta.nombre=nombre;
     }
 }
 $('.apellidos').addEventListener('keyup',()=>{
@@ -74,7 +78,7 @@ function validar_apellidos(){
         $(".apellidos").classList.remove("incorrecto");
         $(".errorApellidos").classList.remove("active");
         $(".apellidos").classList.add("correcto");
-        campos.apellidos=true;
+        infoCuenta.apellidos=apellidos;
     }
 }
 $('.password').addEventListener('keyup',()=>{
@@ -91,15 +95,27 @@ function validar_password(){
         $(".password").classList.remove("incorrecto");
         $(".errorCon").classList.remove("active");
         $(".password").classList.add("correcto");
-        campos.contraseña=true;
+        infoCuenta.contraseña=password;
     }
 }
-$('#siguiente').addEventListener('click',(e)=>{
-    //window.location.replace("../html/registro.html");
-    e.preventDefault();
-    if(campos.nombre && campos.apellidos && campos.correo && campos.contraseña && campos.movil){
+$('#siguiente').addEventListener('click',()=>{
+    if(infoCuenta.nombre !="" && infoCuenta.apellidos!="" && infoCuenta.correo!="" && infoCuenta.contraseña!="" && infoCuenta.movil!=""){
         $(".formulario").classList.remove("active");
         $(".paquetes").classList.add("active");
     }
-    
 });
+$('#basico').addEventListener('click',()=>{
+    infoCuenta.suscripcion="basico";
+    console.log(contadorCuenta)
+    localStorage.setItem(`cuenta${contadorCuenta}`,JSON.stringify(infoCuenta));
+    console.log(localStorage.getItem(`cuenta${contadorCuenta}`));
+    let aumentaNumCuenta=contadorCuenta++;
+    document.cookie=`contador=${aumentaNumCuenta};`
+    console.log(document.cookie);
+})
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+

@@ -15,9 +15,11 @@
     <div class="formulario">
         <form class="registro">
             <label>Correo</label><br>
-            <input type="text" name="correo" class="campo"><br>
+            <input type="text" name="correo" class="campo" id="correo"><br>
             <label>Contraseña</label><br>
-            <input type="text" name="contraseña" class="campo"><br>
+            <input type="text" name="contraseña" class="campo" id="password"><br>
+            <label class="cuentaNoExist">No hay ninguna cuenta con ese correo</label>
+            <label class="errSesion">Correo o contraseña incorecta</label>
             <div class="botones">
                 <a class="btn"id="iniciaSesion"><span>Inicia sesión</span></a>
                 <a class="btn" id="registrarse" href="html/registro.html"><span>Registrarse</span></a>

@@ -20,7 +20,6 @@ h1{
     border: 2px solid #fff;
     color:white;
     font-family: 'Alice';
-    margin-bottom: 20px;
 }
 
 .btn{
@@ -32,6 +31,9 @@ h1{
     padding: 2px;
     /*background: linear-gradient(180deg,#ecc572 0,#815500);
     font-size: 15px;*/
+}
+.botones{
+    margin-top: 10px;
 }
 /*.btn span{
     background: #fff;
@@ -51,4 +53,18 @@ h1{
 .logo{
     display: block;
     margin:auto;
+}
+.errSesion{
+    display: none;
+}
+.errSesion.active{
+    display: flex;
+    margin-bottom: 10px;
+}
+.cuentaNoExist{
+    display: none;
+}
+.cuentaNoExist.active{
+    display: flex;
+    margin-bottom: 10px;
 }

@@ -14,7 +14,6 @@ h1{
     justify-content: center;
 }
 .formulario.active{
-    visibility: visible;
     display:flex;
     justify-content: center;
 }
@@ -41,11 +40,22 @@ textarea{
     height: 200px;
     resize: none;
 }
-button{
+.campos.movil{
+    margin-right: 290px;
+}
+.btn{
     font-family: "Potta One", cursive;
     color:#000;
     background-color: #fff;
     border-radius: 7px;
+    margin-right: 70px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 2px;
+    text-decoration: none;
+}
+#siguiente{
+    float: right;
 }
 .correo.incorrecto{
     border:solid 2px red;
@@ -351,6 +361,10 @@ h2{
     border-radius: 20px;
     width: 150px;
     cursor: pointer;
+    background-image: url("../images/carrito.png");
+    background-repeat: no-repeat;
+    background-size: 15%;
+    background-position: 10%;
 }
 #gratis{
     background-color: #b2e084;
