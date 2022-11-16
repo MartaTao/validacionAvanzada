@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alice" rel="stylesheet">
     <link rel="stylesheet" href="css/index_style.css">
     <title>Login</title>
 </head>
@@ -14,11 +15,13 @@
     <div class="formulario">
         <form class="registro">
             <label>Correo</label><br>
-            <input type="text" name="correo"><br>
+            <input type="text" name="correo" class="campo"><br>
             <label>Contraseña</label><br>
-            <input type="text" name="contraseña"><br>
-            <button class="btn" id="registrarse">Registrarse</button>
-            <button class="btn"id="iniciaSesion">Iniciar sesión</button>
+            <input type="text" name="contraseña" class="campo"><br>
+            <div class="botones">
+                <a class="btn"id="iniciaSesion"><span>Inicia sesión</span></a>
+                <a class="btn" id="registrarse" href="html/registro.html"><span>Registrarse</span></a>
+            </div>
         </form>
     </div>
     <div class="footer">

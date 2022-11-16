@@ -32,7 +32,7 @@ $('.movil').addEventListener('keyup',()=>{
 function validar_movil(){
     var numtel = document.getElementById("movil").value;
     var MOVIL_REGEX= /^\d{9}|\d{3} \d{3} \d{3}|\d{3} \d{2} \d{2} \d{2}/;
-    if(!numtel.match(MOVIL_REGEX)){
+    if(!numtel.match(MOVIL_REGEX)&&numtel.length){
         $("#movil").classList.remove("correcto");
         $("#movil").classList.add("incorrecto");
         $(".errorMovil").classList.add("active");
@@ -98,7 +98,8 @@ $('#siguiente').addEventListener('click',(e)=>{
     //window.location.replace("../html/registro.html");
     e.preventDefault();
     if(campos.nombre && campos.apellidos && campos.correo && campos.contraseña && campos.movil){
-        window.open("../html/suscripcion.html");
+        $(".formulario").classList.remove("active");
+        $(".paquetes").classList.add("active");
     }
     
 });

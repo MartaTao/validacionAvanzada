@@ -12,17 +12,38 @@ h1{
     display:flex;
     justify-content: center;
 }
-input{
+ input{
     border-radius: 5px;
     width: 400px;
     height: 30px;
-    border:solid 2px #696B74;
+    background: transparent;
+    border: 2px solid #fff;
+    color:white;
+    font-family: 'Alice';
+    margin-bottom: 20px;
 }
-button{
+
+.btn{
+    position:relative;
     font-family: "Potta One", cursive;
     color:#000;
     background-color: #fff;
     border-radius: 7px;
+    padding: 2px;
+    /*background: linear-gradient(180deg,#ecc572 0,#815500);
+    font-size: 15px;*/
+}
+/*.btn span{
+    background: #fff;
+    border-radius: 4px;
+    
+}*/
+#registrarse{
+    float: right;
+}
+
+.registro a{
+    text-decoration: none;
 }
 .footer{
     margin-top: 30px;
