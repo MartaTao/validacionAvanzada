@@ -13,14 +13,24 @@
 </head>
 <body>
     <h1 class="titulo">Vive la Alta Gastronomía</h1>
-    <div class="ticket"></div>
+    <div class="ticket">
+        <table class="compra">
+            
+        </table>
+    </div>
     <div class="pago">
         <form class="fomaPago">
-            <label>Numero de tarjeta</label>
+            <label>Numero de tarjeta</label><br>
+            <input type="text" class="tarjeta" id="tarjeta" maxlength="19"><br>
+            <label>Fecha exp. (DD/AA)</label><label>CVV</label><br>
+            <input class="fecha" id="mes" type="text">
+            <input class="fecha" id="anio" type="text"><br>
+            <label class="errorMes"></label><label class="errorAnio"></label>
         </form>
     </div>
     <div class="footer">
         <img src="../images/logo.png" class="logo">
     </div>
+    <script src="../js/suscipcion.js"></script>
 </body>
 </html>
