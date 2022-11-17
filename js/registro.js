@@ -8,7 +8,6 @@ let infoCuenta={
     suscripcion:"",
 }
 document.cookie="contador";
-let contadorCuenta=getCookie("contador");
 function $(selector){
     return document.querySelector(selector);
 }
@@ -22,12 +21,29 @@ function validar_correo(){
     if( !email.match(CORREO_REGEX)){
         $("#email").classList.remove("correcto");
         $("#email").classList.add("incorrecto");
+        $(".errorCorreo").textContent="El correo introducido no es válido"
         $(".errorCorreo").classList.add("active");
-    }else{
-        $("#email").classList.remove("incorrecto");
-        $(".errorCorreo").classList.remove("active");
-        $("#email").classList.add("correcto");
-        infoCuenta.correo=email;
+    }else{;
+        let totalCorreos=parseInt(localStorage.getItem("numCuentas"));
+        let i=0;
+        let correoExiste=false;
+        for(;i<totalCorreos;i++ ){
+            info = JSON.parse(localStorage.getItem(`cuenta${i}`));
+            if(email==info.correo){
+                correoExiste=true;
+            }
+        }
+        if(!correoExiste){
+            $("#email").classList.remove("incorrecto");
+            $(".errorCorreo").classList.remove("active");
+            $("#email").classList.add("correcto");
+            infoCuenta.correo=email;
+        }else{
+            $("#email").classList.remove("correcto");
+            $(".errorCorreo").textContent="El correo introducido ya existe"
+            $(".errorCorreo").classList.add("active");
+            $("#email").classList.add("incorrecto");
+        }
     }
 }
 $('#movil').addEventListener('keyup',()=>{
@@ -102,19 +118,26 @@ $('#siguiente').addEventListener('click',()=>{
     if(infoCuenta.nombre !="" && infoCuenta.apellidos!="" && infoCuenta.correo!="" && infoCuenta.contraseña!="" && infoCuenta.movil!=""){
         $(".formulario").classList.remove("active");
         $(".paquetes").classList.add("active");
+        elijePaquete();
     }
 });
-$('#basico').addEventListener('click',()=>{
-    infoCuenta.suscripcion="basico";
-    console.log(contadorCuenta)
-    localStorage.setItem(`cuenta${contadorCuenta}`,JSON.stringify(infoCuenta));
-    let aumentaNumCuenta=contadorCuenta++;
-    document.cookie=`contador=${aumentaNumCuenta}`
-    localStorage.setItem("numCuentas",`${contadorCuenta}`);
-})
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+function elijePaquete(){
+    let paquetes = document.getElementsByClassName("comprar");
+    let i=0;
+    for(;i<paquetes.length;i++){
+        paquetes[i].addEventListener('click',function(){
+            infoCuenta.suscripcion=this.id;
+            if(localStorage.getItem("numCuentas")==null){
+                contadorCuenta=0;
+            }else{
+                contadorCuenta=localStorage.getItem("numCuentas")
+            }
+            localStorage.setItem(`cuenta${contadorCuenta}`,JSON.stringify(infoCuenta));
+            contadorCuenta++;
+            localStorage.setItem("numCuentas",`${contadorCuenta}`);
+            window.open("../html/suscripcion.html");
+        })
+    }
 }
+
 

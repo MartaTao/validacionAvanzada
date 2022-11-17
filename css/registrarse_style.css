@@ -74,13 +74,14 @@ textarea{
 .errorCorreo{
     margin-top: 0px;
     margin-bottom: 3px;
-    visibility: hidden;
+    display: none;
 }
 .errorCorreo.active{
     margin-top: 0px;
     margin-bottom: 3px;
-    visibility: visible;
+    display: flex;
     color:red;
+    float: left;
 }
 .movil.incorrecto{
     border:solid 2px red;
@@ -99,12 +100,12 @@ textarea{
 .errorMovil{
     margin-top: 0px;
     margin-bottom: 3px;
-    visibility: hidden;
+    display: none;
 }
 .errorMovil.active{
     margin-top: 0px;
     margin-bottom: 3px;
-    visibility: visible;
+    display: flex;
     color:red;
 }
 .nombre.incorrecto{
@@ -124,13 +125,15 @@ textarea{
 .errorNombre{
     margin-top: 0px;
     margin-bottom: 3px;
-    visibility: hidden;
+    display: none;
 }
 .errorNombre.active{
     margin-top: 0px;
     margin-bottom: 3px;
-    visibility: visible;
+    display: flex;
     color:red;
+    float: left;
+    text-align: left;
 }
 
 .apellidos.incorrecto{
@@ -150,15 +153,16 @@ textarea{
 .errorApellidos{
     margin-top: 0px;
     margin-bottom: 3px;
-    margin-left: 150px;
-    visibility: hidden;
+    display: none;
 }
 .errorApellidos.active{
     margin-top: 0px;
     margin-bottom: 3px;
-    visibility: visible;
+    display: flex;
     color:red;
-    margin-left: 150px;
+    float: right;
+    text-align: left;
+    margin-right: 190px;
 }
 .password.incorrecto{
     border:solid 2px red;
@@ -177,15 +181,16 @@ textarea{
 .errorCon{
     margin-top: 0px;
     margin-bottom: 3px;
-    margin-left: 150px;
-    visibility: hidden;
+    display: none;
 }
 .errorCon.active{
     margin-top: 0px;
     margin-bottom: 3px;
-    visibility: visible;
+    display: flex;
     color:red;
-    margin-left: 13px;
+    float: right;
+    margin-right: 200px;
+    text-align: left;
 }
 .footer{
     position: relative;
@@ -200,11 +205,11 @@ textarea{
     justify-content: center;
 }
 .paquetes.active{
-    visibility: visible;
+    display: flex;
     display:flex;
     justify-content: center;
 }
-#basico::before{
+#gratis::before{
     position: absolute;
     top: -150px;
     right: 0px;
@@ -215,7 +220,7 @@ textarea{
     background-color: #66a329;
     z-index: -1;
 }
-#basico{
+#gratis{
     position: relative;
     width: 300px;
     height: 600px;
@@ -223,7 +228,7 @@ textarea{
     margin-top: 150px;
     background-color: #66a329;
 }
-#iniciado::before{
+#treinta::before{
     position: absolute;
     top: -150px;
     right: 0px;
@@ -234,7 +239,7 @@ textarea{
     background-color: #ffad42;
     z-index: -1;
 }
-#iniciado{
+#treinta{
     position: relative;
     width: 300px;
     height: 600px;
@@ -242,7 +247,7 @@ textarea{
     margin-top: 150px;
     background-color: #ffad42;
 }
-#intermedio::before{
+#cincuenta::before{
     position: absolute;
     top: -150px;
     right: 0px;
@@ -253,7 +258,7 @@ textarea{
     background-color: #e31342;
     z-index: -1;
 }
-#intermedio{
+#cincuenta{
     position: relative;
     width: 300px;
     height: 600px;
@@ -261,7 +266,7 @@ textarea{
     margin-top: 150px;
     background-color: #e31342;
 }
-#experto::before{
+#noventa::before{
     position: absolute;
     top: -150px;
     right: 0px;
@@ -272,7 +277,7 @@ textarea{
     background-color: #49c1f6;
     z-index: -1;
 }
-#experto{
+#noventa{
     position: relative;
     width: 300px;
     height: 600px;
@@ -280,7 +285,7 @@ textarea{
     margin-top: 150px;
     background-color: #49c1f6;
 }
-#sibarita::before{
+#cientoveinte::before{
     position: absolute;
     top: -150px;
     right: 0px;
@@ -291,7 +296,7 @@ textarea{
     background-color: #8f8bdc;
     z-index: -1;
 }
-#sibarita{
+#cientoveinte{
     position: relative;
     width: 300px;
     height: 600px;
@@ -366,23 +371,23 @@ h2{
     background-size: 15%;
     background-position: 10%;
 }
-#gratis{
+#basico{
     background-color: #b2e084;
     border: solid 2px #8cd147;
 }
-#treinta{
+#iniciado{
     background-color: #f4cf72;
     border: solid 2px #ad762f;
 }
-#cincuenta{
+#intermedio{
     background-color: #e45273;
     border: solid 2px #8c0c29;
 }
-#noventa{
+#experto{
     background-color: #84d4f8;
     border: solid 2px #30a5e8;
 }
-#cientoveinte{
+#sibarita{
     background-color: #d4baf7;
     border: solid 2px #aa75f0;
 }
