@@ -12,17 +12,52 @@ h1{
     text-align: center;
 }
 .ticket{
+    margin-left: 170px;
     background-color: #fff;
-    background-image: url("../images/logoNegro.png");
-    background-repeat: no-repeat;
     float: left;
-    width: 50%;
+    width: 30%;
     color:#000;
-    height: 500px;
+    font-family: 'Alice';
+}
+.imagen img{
+    display:block;
+    margin: auto;
+}
+td{
+    width: 300px;
+    text-align: center;
 }
 .pago{
     float: right;
     display:flex;
     justify-content: center;
     width: 50%;
+}
+.errorMes{
+    display:none;
+}
+.errorMes.active{
+    display:flex;
+    color:red;
+}
+.errorAnio{
+    display:none;
+}
+.errorAnio.active{
+    display:flex;
+    color:red;
+}
+.asteriscos{
+    text-align: center;
+}
+
+.footer{
+    margin-top: 300px;
+}
+.footer img{
+    display:block;
+    margin: auto;
+}
+.total td{
+    width: 300px;
 }

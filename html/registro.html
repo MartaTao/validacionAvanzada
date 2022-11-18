@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alice" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One" rel="stylesheet">
     <link rel="stylesheet" href="../css/registrarse_style.css">
     <title>Registrarse</title>
 </head>
@@ -51,7 +53,7 @@
                 </div>
                 <div class="infoCompra">
                     <h1>Gratuito</h1>
-                    <div class="comprar" id="basico">Comprar</div>
+                    <div class="comprar" id="Basico">Comprar</div>
                 </div>
             </div>
             <div class="paquete" id="treinta">
@@ -69,7 +71,7 @@
                 </div>
                 <div class="infoCompra">
                     <h1>30€</h1>
-                    <div class="comprar" id="iniciado">Comprar</div>
+                    <div class="comprar" id="Iniciado">Comprar</div>
                 </div>
             </div>
             <div class="paquete" id="cincuenta">
@@ -87,7 +89,7 @@
                 </div>
                 <div class="infoCompra">
                     <h1>50€</h1>
-                    <div class="comprar" id="intermedio">Comprar</div>
+                    <div class="comprar" id="Intermedio">Comprar</div>
                 </div>
             </div>
             <div class="paquete" id="noventa">
@@ -106,7 +108,7 @@
                 </div>
                 <div class="infoCompra">
                     <h1>90€</h1>
-                    <div class="comprar" id="experto">Comprar</div>
+                    <div class="comprar" id="Experto">Comprar</div>
                 </div>
             </div>
             <div class="paquete" id="cientoveinte">
@@ -127,9 +129,33 @@
                 </div>
                 <div class="infoCompra">
                     <h1>120€</h1>
-                    <div class="comprar" id="sibarita">Comprar</div>
+                    <div class="comprar" id="Sibarita">Comprar</div>
                 </div>
             </div>
+        </div>
+        <div class="ticket">
+            <div class="imagen">
+                <img src="../images/logoNegro.png">
+            </div>
+            <table class="compra">
+                
+            </table>
+            <p class="asteriscos"></p>
+            <table class="total">
+
+            </table>
+        </div>
+        <div class="pago">
+            <form class="fomaPago">
+                <label>Numero de tarjeta</label><br>
+                <input type="text" class="tarjeta" id="tarjeta" maxlength="19"><br>
+                <label>Fecha exp.(DD/AA)</label> <label class="cv">CVV</label><br>
+                <input class="fecha" id="mes" type="text">
+                <input class="fecha" id="anio" type="text">
+                <input class="cvv" id="cvv" type="text"><br>
+                <label class="errorMes"></label><label class="errorAnio"></label>
+                <div class="aceptar" id="aceptar">Aceptar</div>
+            </form>
         </div>
     </div>
     <div class="footer">

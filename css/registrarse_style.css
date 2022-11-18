@@ -17,7 +17,7 @@ h1{
     display:flex;
     justify-content: center;
 }
-input{
+.formulario input{
     border-radius: 5px;
     width: 300px;
     height: 30px;
@@ -371,23 +371,23 @@ h2{
     background-size: 15%;
     background-position: 10%;
 }
-#basico{
+#Basico{
     background-color: #b2e084;
     border: solid 2px #8cd147;
 }
-#iniciado{
+#Iniciado{
     background-color: #f4cf72;
     border: solid 2px #ad762f;
 }
-#intermedio{
+#Intermedio{
     background-color: #e45273;
     border: solid 2px #8c0c29;
 }
-#experto{
+#Experto{
     background-color: #84d4f8;
     border: solid 2px #30a5e8;
 }
-#sibarita{
+#Sibarita{
     background-color: #d4baf7;
     border: solid 2px #aa75f0;
 }
@@ -397,4 +397,75 @@ h2{
 .logo{
     display: block;
     margin:auto;
+}
+.ticket{
+    display:none;
+}
+.ticket.active{
+    display:block;
+    margin-left: 170px;
+    background-color: #fff;
+    float: left;
+    width: 30%;
+    color:#000;
+    font-family: 'Alice';
+}
+.imagen img{
+    display:block;
+    margin: auto;
+}
+td{
+    width: 300px;
+    text-align: center;
+}
+.pago{
+    float: right;
+    display:flex;
+    width: 50%;
+}
+.errorMes{
+    display:none;
+}
+.errorMes.active{
+    display:flex;
+    color:red;
+}
+.errorAnio{
+    display:none;
+}
+.errorAnio.active{
+    display:flex;
+    color:red;
+}
+.asteriscos{
+    text-align: center;
+}
+
+.footer{
+    margin-top: 300px;
+}
+.footer img{
+    display:block;
+    margin: auto;
+}
+.total td{
+    width: 300px;
+}
+.pago{
+    display: none;
+}
+.pago.active{
+    display: flex;
+}
+.pago input{
+    border-radius: 5px;
+    border:solid 2px #ecc572;
+}
+.fecha{
+    width: 50px;
+    margin-left: 5px;
+}
+.cvv{
+    width: 50px;
+    margin-left: 30px;
 }

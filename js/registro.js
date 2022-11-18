@@ -127,17 +127,86 @@ function elijePaquete(){
     for(;i<paquetes.length;i++){
         paquetes[i].addEventListener('click',function(){
             infoCuenta.suscripcion=this.id;
-            if(localStorage.getItem("numCuentas")==null){
-                contadorCuenta=0;
-            }else{
-                contadorCuenta=localStorage.getItem("numCuentas")
-            }
-            localStorage.setItem(`cuenta${contadorCuenta}`,JSON.stringify(infoCuenta));
-            contadorCuenta++;
-            localStorage.setItem("numCuentas",`${contadorCuenta}`);
-            window.open("../html/suscripcion.html");
+            creaTicket();
         })
     }
+    
+}
+function creaTicket(){
+    $(".paquetes").classList.remove("active");
+    let f=0;
+    let c=0;
+    let totalPagar=0.0;
+    let fila= document.createElement("tr");
+    fila.setAttribute("id",`fila${f}`);
+    $(".compra").appendChild(fila);
+    let celda = document.createElement("td")
+    celda.setAttribute("id",`celda${c}`);
+    $(`#fila${f}`).appendChild(celda);
+    $(`#celda${c}`).textContent=`${infoCuenta.suscripcion}`;
+    c++;
+    celda = document.createElement("td");
+    celda.setAttribute("id",`celda${c}`);
+    $(`#fila${f}`).appendChild(celda);
+    $(`#celda${c}`).textContent="x1";
+    c++;
+    celda = document.createElement("td");
+    celda.setAttribute("id",`celda${c}`);
+    $(`#fila${f}`).appendChild(celda);
+    switch (infoCuenta.suscripcion){
+        case 'Basico':
+            $(`#celda${c}`).textContent="00.00";
+            totalPagar=totalPagar+00,00;
+        break;
+        case 'Iniciado':
+            $(`#celda${c}`).textContent="30.00";
+            totalPagar=totalPagar+30,00;
+        break;
+        case 'Intermedio':
+            $(`#celda${c}`).textContent="50.00";
+            totalPagar=totalPagar+50,00;
+        break;
+        case 'Experto':
+            $(`#celda${c}`).textContent="90.00";
+            totalPagar=totalPagar+90,00;
+        break;
+        case 'Sibarita':
+            $(`#celda${c}`).textContent="120.00";
+            totalPagar=totalPagar+120,00;
+        break;
+    }
+    $(`.asteriscos`).textContent="***********************";
+    f++;
+    c++;
+    fila= document.createElement("tr");
+    fila.setAttribute("id",`fila${f}`);
+    $(".total").appendChild(fila);
+    celda = document.createElement("td");
+    celda.setAttribute("id",`celda${c}`);
+    $(`#fila${f}`).appendChild(celda);
+    $(`#celda${c}`).textContent="Total a pagar"
+    c++;
+    celda = document.createElement("td");
+    celda.setAttribute("id",`celda${c}`);
+    $(`#fila${f}`).appendChild(celda);
+    $(`#celda${c}`).textContent=""
+    c++;
+    celda = document.createElement("td");
+    celda.setAttribute("id",`celda${c}`);
+    $(`#fila${f}`).appendChild(celda);
+    $(`#celda${c}`).textContent=`${totalPagar}`;
+    $(".pago").classList.add("active");
+    $(".ticket").classList.add("active");
+    /*$(".siguiente").addEventListener('click',()=>{
+        if(localStorage.getItem("numCuentas")==null){
+            contadorCuenta=0;
+        }else{
+            contadorCuenta=localStorage.getItem("numCuentas")
+        }
+        localStorage.setItem(`cuenta${contadorCuenta}`,JSON.stringify(infoCuenta));
+        contadorCuenta++;
+        localStorage.setItem("numCuentas",`${contadorCuenta}`);
+    })*/
 }
 
 
