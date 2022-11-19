@@ -11,13 +11,15 @@ body{
 h1{
     text-align: center;
 }
-.ticket{
+.ticketContainer{
     margin-left: 170px;
-    background-color: #fff;
     float: left;
     width: 30%;
     color:#000;
     font-family: 'Alice';
+}
+.ticket{
+    background-color: #fff;
 }
 .imagen img{
     display:block;
@@ -61,3 +63,26 @@ td{
 .total td{
     width: 300px;
 }
+.triangulosSup div{
+    display:inline-block;
+    margin-bottom: -4px;
+}
+.trianguloSup{
+    width: 0;
+    height: 0; 
+    border-left:5px solid transparent;
+    border-right: 5px solid transparent ;
+    border-bottom:10px solid #fff ; 
+}
+.triangulosInf div{
+    display:inline-block;
+    margin-top: -1px;
+}
+.trianguloInf{
+    width: 0;
+    height: 0;  
+    border-left:5px solid transparent;
+    border-right: 5px solid transparent ;
+    border-top:10px solid #fff ; 
+}
+
