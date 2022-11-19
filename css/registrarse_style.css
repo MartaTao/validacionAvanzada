@@ -398,10 +398,13 @@ h2{
     display: block;
     margin:auto;
 }
-.ticket{
+.recibo{
     display:none;
 }
-.ticket.active{
+.recibo.active{
+    display:block;
+}
+.ticket{
     display:block;
     margin-left: 170px;
     background-color: #fff;
@@ -440,7 +443,6 @@ td{
 .asteriscos{
     text-align: center;
 }
-
 .footer{
     margin-top: 300px;
 }
@@ -451,21 +453,82 @@ td{
 .total td{
     width: 300px;
 }
-.pago{
-    display: none;
-}
-.pago.active{
-    display: flex;
-}
 .pago input{
     border-radius: 5px;
     border:solid 2px #ecc572;
 }
+.errorTarjeta{
+    display:none;
+}
+.errorTarjeta.active{
+    display:flex;
+    color:red;
+}
+.errorMes{
+    display:none;
+}
+.errorMes.active{
+    display:flex;
+    color:red;
+}
+.errorAnio{
+    display:none;
+}
+.errorAnio.active{
+    display:flex;
+    color:red;
+}
+.errorCVV{
+    display:none;
+}
+.cv{
+    margin-left: 40px;
+}
+.errorCVV.active{
+    display:flex;
+    color:red;
+    margin-left: 220px;
+}
+.tarjeta{
+    width: 300px;
+    height: 25px;
+}
 .fecha{
-    width: 50px;
-    margin-left: 5px;
+    width: 70px;
+    height: 20px;
+    margin-right: 5px;
 }
 .cvv{
-    width: 50px;
-    margin-left: 30px;
+    width: 80px;
+    height: 20px;
+    margin-left: 40px;
 }
+#aceptar{
+    width: 90px;
+    float:right;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+#cancelar{
+    width: 100px;
+    float: left;
+    margin-top: 10px;
+}
+.agradecimiento{
+    display:none;
+}
+.agradecimiento.active{
+    display:block;
+}
+.finRegistro{
+    display:block;
+    margin: auto;
+    background-color: #fff;
+    color: #000;
+    width: 40%;
+}
+#inicio{
+    width: 150px;
+    margin:auto;
+}
+

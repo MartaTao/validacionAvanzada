@@ -5,49 +5,14 @@ body{
     font-family: "Potta One", cursive;
     color:#fff;
 }
-.fuente{
-    text-align: center;
-}
+
 h1{
     text-align: center;
 }
-.ticketContainer{
-    margin-left: 170px;
-    float: left;
-    width: 30%;
-    color:#000;
-    font-family: 'Alice';
-}
-.ticket{
-    background-color: #fff;
-}
+
 .imagen img{
     display:block;
     margin: auto;
-}
-td{
-    width: 300px;
-    text-align: center;
-}
-.pago{
-    float: right;
-    display:flex;
-    justify-content: center;
-    width: 50%;
-}
-.errorMes{
-    display:none;
-}
-.errorMes.active{
-    display:flex;
-    color:red;
-}
-.errorAnio{
-    display:none;
-}
-.errorAnio.active{
-    display:flex;
-    color:red;
 }
 .asteriscos{
     text-align: center;
@@ -60,29 +25,6 @@ td{
     display:block;
     margin: auto;
 }
-.total td{
-    width: 300px;
-}
-.triangulosSup div{
-    display:inline-block;
-    margin-bottom: -4px;
-}
-.trianguloSup{
-    width: 0;
-    height: 0; 
-    border-left:5px solid transparent;
-    border-right: 5px solid transparent ;
-    border-bottom:10px solid #fff ; 
-}
-.triangulosInf div{
-    display:inline-block;
-    margin-top: -1px;
-}
-.trianguloInf{
-    width: 0;
-    height: 0;  
-    border-left:5px solid transparent;
-    border-right: 5px solid transparent ;
-    border-top:10px solid #fff ; 
-}
+
+
 

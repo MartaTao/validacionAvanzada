@@ -133,30 +133,46 @@
                 </div>
             </div>
         </div>
-        <div class="ticket">
-            <div class="imagen">
-                <img src="../images/logoNegro.png">
+        <div class="recibo">
+            <div class="ticket">
+                <div class="imagen">
+                    <img src="../images/logoNegro.png">
+                </div>
+                <table class="compra">
+                    
+                </table>
+                <p class="asteriscos"></p>
+                <table class="total">
+    
+                </table>
             </div>
-            <table class="compra">
-                
-            </table>
-            <p class="asteriscos"></p>
-            <table class="total">
-
-            </table>
+            <div class="pago">
+                <form class="fomaPago">
+                    <label>Numero de tarjeta</label><br>
+                    <input type="text" class="tarjeta" id="tarjeta" maxlength="19"><br>
+                    <label class="errorTarjeta">Formato no válido</label><br>
+                    <label>Fecha exp.(DD/AA)</label> <label class="cv">CVV</label><br>
+                    <input class="fecha" id="mes" type="text">
+                    <input class="fecha" id="anio" type="text">
+                    <input class="cvv" id="cvv" type="text"><br>
+                    <label class="errorMes">Formáto inválido</label><label class="errorAnio">Formáto inválido</label>
+                    <label class="errorCVV">Formáto inválido</label>
+                    <div class="btn" id="cancelar">Cancelar</div>
+                    <div class="btn" id="aceptar">Aceptar</div>
+                </form>
+            </div>
         </div>
-        <div class="pago">
-            <form class="fomaPago">
-                <label>Numero de tarjeta</label><br>
-                <input type="text" class="tarjeta" id="tarjeta" maxlength="19"><br>
-                <label>Fecha exp.(DD/AA)</label> <label class="cv">CVV</label><br>
-                <input class="fecha" id="mes" type="text">
-                <input class="fecha" id="anio" type="text">
-                <input class="cvv" id="cvv" type="text"><br>
-                <label class="errorMes"></label><label class="errorAnio"></label>
-                <div class="aceptar" id="aceptar">Aceptar</div>
-            </form>
+        <div class="agradecimiento">
+            <div class="finRegistro">
+                <div class="imagen">
+                    <img src="../images/logoNegro.png">
+                </div>
+                <h1>Muchas gracias por su suscripción</h1>
+            </div>
+            <div class="btn" id="inicio">Iniciar sesion</div>
         </div>
+        
+</div>
     </div>
     <div class="footer">
         <img src="../images/logo.png" class="logo">

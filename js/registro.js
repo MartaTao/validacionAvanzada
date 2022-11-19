@@ -6,8 +6,13 @@ let infoCuenta={
     movil: "",
     observaciones:"",
     suscripcion:"",
+    metodoPago:{
+        numTarjtea:"",
+        mesExp:"",
+        anioExp:"",
+        numCVV:"",
+    }
 }
-document.cookie="contador";
 function $(selector){
     return document.querySelector(selector);
 }
@@ -134,6 +139,7 @@ function elijePaquete(){
 }
 function creaTicket(){
     $(".paquetes").classList.remove("active");
+    $(".recibo").classList.add("active");
     let f=0;
     let c=0;
     let totalPagar=0.0;
@@ -197,7 +203,79 @@ function creaTicket(){
     $(`#celda${c}`).textContent=`${totalPagar}`;
     $(".pago").classList.add("active");
     $(".ticket").classList.add("active");
-    /*$(".siguiente").addEventListener('click',()=>{
+}
+$('.tarjeta').addEventListener('keyup',()=>{
+    validar_numTarjeta()
+})
+function validar_numTarjeta(){
+    const TARJETA_REGEX=/^(\d\s?){15,16}$/;
+    const numTarjtea=$('.tarjeta').value;
+    if(!numTarjtea.match(TARJETA_REGEX)){
+        $(".tarjeta").classList.remove("correcto");
+        $(".tarjeta").classList.add("incorrecto");
+        $(".errorTarjeta").classList.add("active");
+    }else{
+        $(".tarjeta").classList.remove("incorrecto");
+        $(".errorTarjeta").classList.remove("active");
+        $(".tarjeta").classList.add("correcto");
+        infoCuenta.metodoPago.numTarjtea=numTarjtea;
+    }
+}
+$('#mes').addEventListener('keyup',()=>{
+    validar_mes()
+})
+function validar_mes(){
+    const MES_REGEX=/^[+]?(0?[1-9]|1[0-2])$/;
+    const mes=$('#mes').value;
+    if(!mes.match(MES_REGEX)){
+        $("#mes").classList.remove("correcto");
+        $("#mes").classList.add("incorrecto");
+        $(".errorMes").classList.add("active");
+    }else{
+        $("#mes").classList.remove("incorrecto");
+        $(".errorMes").classList.remove("active");
+        $("#mes").classList.add("correcto");
+        infoCuenta.metodoPago.mesExp=mes;
+    }
+}
+$('#anio').addEventListener('keyup',()=>{
+    validar_anio()
+})
+function validar_anio(){
+    const ANIO_REGEX=/^([0-9]{2})$/;
+    const anio=$('#anio').value;
+    if(!anio.match(ANIO_REGEX)){
+        $("#anio").classList.remove("correcto");
+        $("#anio").classList.add("incorrecto");
+        $(".errorAnio").classList.add("active");
+    }else{
+        $("#anio").classList.remove("incorrecto");
+        $(".errorAnio").classList.remove("active");
+        $("#anio").classList.add("correcto");
+        infoCuenta.metodoPago.anioExp=anio;
+    }
+}
+$('.cvv').addEventListener('keyup',()=>{
+    validar_cvv();
+})
+function validar_cvv(){
+    const CVV_REGEX=/^[0-9]{3,4}$/;
+    const numCVV=$('.cvv').value;
+    if(!numCVV.match(CVV_REGEX)){
+        $(".cvv").classList.remove("correcto");
+        $(".cvv").classList.add("incorrecto");
+        $(".errorCVV").classList.add("active");
+    }else{
+        $(".cvv").classList.remove("incorrecto");
+        $(".errorCVV").classList.remove("active");
+        $(".cvv").classList.add("correcto");
+        infoCuenta.metodoPago.numCVV=numCVV;
+    }
+}
+$("#aceptar").addEventListener('click',()=>{
+    if(infoCuenta.metodoPago.numTarjtea!=""&&infoCuenta.metodoPago.mesExp!=""&&infoCuenta.metodoPago.anioExp!=""&&infoCuenta.metodoPago.numCVV!=""){
+        $(".recibo").classList.remove("active");
+        $('.agradecimiento').classList.add("active");
         if(localStorage.getItem("numCuentas")==null){
             contadorCuenta=0;
         }else{
@@ -206,7 +284,8 @@ function creaTicket(){
         localStorage.setItem(`cuenta${contadorCuenta}`,JSON.stringify(infoCuenta));
         contadorCuenta++;
         localStorage.setItem("numCuentas",`${contadorCuenta}`);
-    })*/
-}
-
-
+    } 
+})
+$("#inicio").addEventListener('click',()=>{
+    location.href="../index.html"
+})
