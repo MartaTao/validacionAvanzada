@@ -25,6 +25,47 @@ h1{
     display:block;
     margin: auto;
 }
-
-
-
+.btn{
+    position:relative;
+    font-family: "Potta One", cursive;
+    color:#000;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 2px;
+    cursor:pointer;
+    /*background: linear-gradient(180deg,#ecc572 0,#815500);
+    font-size: 15px;*/
+}
+.carritoBtn{
+    font-size: 50px;
+    cursor: pointer;
+}
+.carrito{
+    display:none;
+}
+.carrito.active{
+    display:flex;
+    width: 80%;
+    margin:0 10%;
+    max-height: 88vh;
+    color:#fff;
+    background-color: #000;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    overflow: auto;
+    z-index: 9;
+    top: 12vh;
+    scrollbar-color: none;
+}
+.carrito::-webkit-scrollbar{
+    display:none;
+}
+.carrito > .contenido{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    margin: 10px;
+}

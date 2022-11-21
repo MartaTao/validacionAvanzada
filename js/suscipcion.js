@@ -7,6 +7,7 @@ let info={
     observaciones:"",
     suscripcion:"Iniciado",
 }
+let carrito=[];
 function $(selector){
     return document.querySelector(selector);
 }
@@ -28,38 +29,96 @@ switch (info.suscripcion){
     break;
 }
 document.addEventListener('DOMContentLoaded',()=>{
-    fecthInfo();
+    if (localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'))||[];
+        actualizarCarrito()
+    }
 })
-const fecthInfo=async()=>{//Recojo la informacion del .jason y ahsta que no termina no sigue el script
-    const res = await fetch('../other/cursos.json');
-    const datos = await res.json();
-    muestraCurso(datos);
-}
-const muestraCurso=datos=>{
-    let i=1;
-    datos.forEach(curso => {
-        if(info.suscripcion==curso.nivel){
-            let div=document.createElement("div");
-            div.setAttribute("class","curso");
-            div.setAttribute("id",`curso${i}`);
-            $(".cursos").appendChild(div);
-            let nombre=document.createElement("h2");
-            nombre.setAttribute("class","nombre");
-            nombre.setAttribute("id",`nombre${i}`)
-            $(`#curso${i}`).appendChild(nombre);
-            $(`#nombre${i}`).textContent=curso.nombre;
-            let descripcion=document.createElement("p")
-            descripcion.setAttribute("class","descripcion");
-            descripcion.setAttribute("id",`descripcion${i}`);
-            $(`#curso${i}`).appendChild(descripcion);
-            $(`#descripcion${i}`).textContent=curso.descripcion;
-            if(curso.img!=""){
-                let img=document.createElement("img")
-                img.setAttribute("class","imagen");
-                img.setAttribute("id",`img${i}`);
-                img.setAttribute("src",`${curso.img}`);
-                $(`#curso${i}`).appendChild(img);
-            }
+cursos.forEach((prod)=>{
+    if(info.suscripcion==prod.nivel){
+        const {id,nivel,nombre,precio,descripcion,img,direccion,duracion,horario,cantidad}=prod;
+        if(img!=""){
+            $(".cursos").innerHTML += `<div class="curso>
+                <h3>${nombre}</h3>
+                <p>Nivel: ${nivel}</p>
+                <p>Descripcion: ${descripcion}</p>
+                <img src="${img}">
+                <p>Direcion: ${direccion}</p>
+                <p>Duracion: ${duracion}</p>
+                <p>horario: ${horario}</p>
+                <p>Precio: ${precio}</p>
+                <div class="btn" id="comprar${id}">Comprar</div>
+            </div>`
+            $(`#comprar${id}`).addEventListener('click',()=>{
+                aniadeProducto(id);
+            })
+        }else{
+            $(".cursos").innerHTML += `<div class="curso>
+            <h3>${nombre}</h3>
+            <p>Nivel: ${nivel}</p>
+            <p>Descripcion: ${descripcion}</p>
+            <p>Direcion: ${direccion}</p>
+            <p>Duracion: ${duracion}</p>
+            <p>horario: ${horario}</p>
+            <p>Precio: ${precio}€</p>
+            <div class="btn" id="comprar${id}">Comprar</div>
+        </div>`
+        $(`#comprar${id}`).addEventListener('click',()=>{
+            aniadeProducto(id);
+        })
         }
-    });
+    }
+})
+
+const aniadeProducto =(id)=>{
+    const existe = carrito.some(producto=>producto.id==id);
+    console.log(existe);
+    if(existe){
+        const prod = carrito.map(prod=>{
+            if(prod.id==id){
+                prod.cantidad++;
+            }
+        })
+    }else{
+        const item = cursos.find((producto)=>producto.id==id);
+        carrito.push(item)
+    }
+    actualizarCarrito();
 }
+function actualizarCarrito(){
+    $(".contenido").innerHTML="";
+    carrito.forEach((prod)=>{
+        const {nombre,precio,cantidad}=prod;
+        $(".contenido").innerHTML+=`<div class="producto">
+            <p>Producto: ${nombre}</p>
+            <p>Precio: ${precio}€</p>
+            <p>Cantidad :${cantidad}</p>
+            <div class="btn" id="eliminarProducto${prod.id}">Eliminar</div>
+        </div>`;
+        const boton= document.getElementById(`eliminarProducto${prod.id}`);
+        boton.addEventListener('click',()=>{
+            eliminarProducto(prod.id);
+        })
+    })
+    $("#contadorCarrito").textContent=`🛒${carrito.length}`;
+    $(".total").textContent=`Total: ${carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)}€`;
+    guardarStorage();
+}
+function eliminarProducto(id){
+    const juegoId = id;
+    carrito = carrito.filter((juego) => juego.id !== juegoId);
+    actualizarCarrito();
+}
+function guardarStorage() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+$("#contadorCarrito").addEventListener('click',()=>{
+    $(".carrito").classList.add("active");
+})
+$("#cerrar").addEventListener('click',()=>{
+    $(".carrito").classList.remove("active");
+})
+$("#vaciar").addEventListener('click',()=>{
+    carrito.length=[];
+    actualizarCarrito();
+})
