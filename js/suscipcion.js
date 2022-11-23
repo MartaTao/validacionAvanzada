@@ -1,11 +1,17 @@
 let info={
     nombre:"a",
     apellidos:"b",
-    correo: "a@g.com",
+    correo: "alejandrodominguez.20@campuscamara.es",
     contraseña: "asdasd",
     movil: "666 666 666",
     observaciones:"",
     suscripcion:"Iniciado",
+    metodoPago:{
+        numTarjtea:"6666 6666 6666",
+        mesExp:"02",
+        anioExp:"28",
+        numCVV:"1234",
+    }
 }
 let carrito=[];
 function $(selector){
@@ -36,9 +42,9 @@ document.addEventListener('DOMContentLoaded',()=>{
 })
 cursos.forEach((prod)=>{
     if(info.suscripcion==prod.nivel){
-        const {id,nivel,nombre,precio,descripcion,img,direccion,duracion,horario,cantidad}=prod;
+        const {id,nivel,nombre,precio,descripcion,img,direccion,duracion,horario}=prod;
         if(img!=""){
-            $(".cursos").innerHTML += `<div class="curso>
+            $(".cursos").innerHTML += `<div class="curso">
                 <h3>${nombre}</h3>
                 <p>Nivel: ${nivel}</p>
                 <p>Descripcion: ${descripcion}</p>
@@ -46,31 +52,62 @@ cursos.forEach((prod)=>{
                 <p>Direcion: ${direccion}</p>
                 <p>Duracion: ${duracion}</p>
                 <p>horario: ${horario}</p>
+                <p>Precio: ${precio} 2 personas</p>
+                <div class="btn" id="comprar${id}">Comprar</div>
+            </div>`
+            $(`#comprar${id}`).addEventListener('click',()=>{
+                aniadeCurso(id);
+            })
+        }else{
+            $(".cursos").innerHTML += `<div class="curso">
+                <h3>${nombre}</h3>
+                <p>Nivel: ${nivel}</p>
+                <p>Descripcion: ${descripcion}</p>
+                <p>Direcion: ${direccion}</p>
+                <p>Duracion: ${duracion}</p>
+                <p>horario: ${horario}</p>
+                <p>Precio: ${precio}€</p>
+                <div class="btn" id="comprar${id}">Comprar</div>
+            </div>`
+            $(`#comprar${id}`).addEventListener('click',()=>{
+                aniadeCurso(id);
+            })
+        }
+    }
+});
+if(info.suscripcion!="Basico"){
+    paquetes.forEach((paq)=>{
+        const {id,nombre,precio,descripcion,img,direccion,duracion}=paq;
+        if(img!=""){
+            $(".paquetes").innerHTML += `<div class="paquete">
+                <h3>${nombre}</h3>
+                <p>Descripcion: ${descripcion}</p>
+                <img src="${img}">
+                <p>Direcion: ${direccion}</p>
+                <p>Duracion: ${duracion}</p>
                 <p>Precio: ${precio}</p>
                 <div class="btn" id="comprar${id}">Comprar</div>
             </div>`
             $(`#comprar${id}`).addEventListener('click',()=>{
-                aniadeProducto(id);
+                aniadePaquete(id);
             })
         }else{
-            $(".cursos").innerHTML += `<div class="curso>
-            <h3>${nombre}</h3>
-            <p>Nivel: ${nivel}</p>
-            <p>Descripcion: ${descripcion}</p>
-            <p>Direcion: ${direccion}</p>
-            <p>Duracion: ${duracion}</p>
-            <p>horario: ${horario}</p>
-            <p>Precio: ${precio}€</p>
-            <div class="btn" id="comprar${id}">Comprar</div>
-        </div>`
-        $(`#comprar${id}`).addEventListener('click',()=>{
-            aniadeProducto(id);
-        })
+            $(".paquetes").innerHTML += `<div class="paquete">
+                <h3>${nombre}</h3>
+                <p>Descripcion: ${descripcion}</p>
+                <p>Direcion: ${direccion}</p>
+                <p>Duracion: ${duracion}</p>
+                <p>Precio: ${precio}€</p>
+                <div class="btn" id="comprar${id}">Comprar</div>
+            </div>`
+            $(`#comprar${id}`).addEventListener('click',()=>{
+                aniadePaquete(id);
+            })
         }
-    }
-})
+    })
+}
 
-const aniadeProducto =(id)=>{
+const aniadeCurso =(id)=>{
     const existe = carrito.some(producto=>producto.id==id);
     console.log(existe);
     if(existe){
@@ -81,6 +118,21 @@ const aniadeProducto =(id)=>{
         })
     }else{
         const item = cursos.find((producto)=>producto.id==id);
+        carrito.push(item)
+    }
+    actualizarCarrito();
+}
+const aniadePaquete =(id)=>{
+    const existe = carrito.some(producto=>producto.id==id);
+    console.log(existe);
+    if(existe){
+        const prod = carrito.map(prod=>{
+            if(prod.id==id){
+                prod.cantidad++;
+            }
+        })
+    }else{
+        const item = paquetes.find((producto)=>producto.id==id);
         carrito.push(item)
     }
     actualizarCarrito();
@@ -122,3 +174,47 @@ $("#vaciar").addEventListener('click',()=>{
     carrito.length=[];
     actualizarCarrito();
 })
+$("#pagar").addEventListener('click',()=>{
+    if(!carrito.length==0){
+        $(".facturacion").classList.add("active");
+        $(".perfil").classList.remove("active");
+        procesarPedido();
+    }
+})
+function procesarPedido(){
+    let fila;
+    carrito.forEach((prod)=>{
+        const {nombre,precio,cantidad}=prod;
+        fila=document.createElement("tr");
+        fila.innerHTML+=`<td>${nombre}</td><td>${precio}</td><td>${cantidad}</td><td>${cantidad*precio}</td>`
+        $(".factura tbody").appendChild(fila);
+    })
+    fila=document.createElement("tr");
+    fila.innerHTML+=`<th>Total a pagar</th><td></td><td></td><td>${carrito.reduce((acc,prod)=>acc+prod.cantidad*prod.precio,0)}</td>`
+    $(".factura").appendChild(fila);
+    $(".tarjeta").value=info.metodoPago.numTarjtea;
+    $("#mes").value=info.metodoPago.mesExp;
+    $("#anio").value=info.metodoPago.anioExp;
+    $(".cvv").value=info.metodoPago.numCVV;
+}
+$("#finalizar").addEventListener('click',()=>{
+    carrito.length=[];
+    Email.send({
+        SecureToken:"85779b15-3446-4df6-9b61-f5811d19f78a",
+        To:`${info.correo}`,
+        From:"martataofernandez.19@campuscamara.es",
+        Subject:"Compra realizada",
+        Body:"Es una prueba"
+    })
+    $(".facturacion").classList.remove("active");
+    $(".agradecimiento").classList.add("active");
+});
+function muestraTicket(){
+    let fila;
+    carrito.forEach((prod)=>{
+        const {nombre,duracion,direccion}=prod;
+        fila=document.createElement("tr");
+        fila.innerHTML+=`<td>${nombre}</td><td>${duracion}</td><td>${direccion}</td>`
+        $(".agenda tbody").appendChild(fila);
+    })
+}
