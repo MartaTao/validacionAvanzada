@@ -198,7 +198,6 @@ function procesarPedido(){
     $(".cvv").value=info.metodoPago.numCVV;
 }
 $("#finalizar").addEventListener('click',()=>{
-    carrito.length=[];
     Email.send({
         SecureToken:"85779b15-3446-4df6-9b61-f5811d19f78a",
         To:`${info.correo}`,
@@ -208,6 +207,7 @@ $("#finalizar").addEventListener('click',()=>{
     })
     $(".facturacion").classList.remove("active");
     $(".agradecimiento").classList.add("active");
+    muestraTicket();
 });
 function muestraTicket(){
     let fila;
@@ -217,4 +217,5 @@ function muestraTicket(){
         fila.innerHTML+=`<td>${nombre}</td><td>${duracion}</td><td>${direccion}</td>`
         $(".agenda tbody").appendChild(fila);
     })
+    carrito.length=[];
 }
