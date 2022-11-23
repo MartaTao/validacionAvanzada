@@ -9,6 +9,9 @@ h1{
     text-align: center;
 }
 .formulario{
+    display: none;
+}
+.formulario.active{
     display:flex;
     justify-content: center;
 }
@@ -67,4 +70,71 @@ h1{
 .cuentaNoExist.active{
     display: flex;
     margin-bottom: 10px;
+}
+.perfil{
+    display:none;
+}
+.perfil.active{
+    display:block;
+}
+.carritoBtn{
+    font-size: 50px;
+    cursor: pointer;
+}
+.carrito{
+    display:none;
+}
+.carrito.active{
+    display:flex;
+    width: 80%;
+    margin:0 10%;
+    max-height: 88vh;
+    color:#fff;
+    background-color: #000;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    overflow: auto;
+    z-index: 9;
+    top: 12vh;
+    scrollbar-color: none;
+}
+.carrito::-webkit-scrollbar{
+    display:none;
+}
+.carrito > .contenido{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    margin: 10px;
+}
+td{
+    width: 300px;
+    height: 60px;
+    text-align: center;
+}
+.facturacion{
+    display: none;
+}
+.facturacion.active{
+    display:flex;
+    margin-left: 170px;
+    background-color: #fff;
+    float: left;
+    width: 30%;
+    color:#000;
+    font-family: 'Alice';
+}
+.pago{
+    float: right;
+    display:flex;
+    width: 50%;
+}
+.agradecimiento{
+    display: none;
+}
+.agradecimiento.active{
+    display: block;
 }

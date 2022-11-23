@@ -12,20 +12,79 @@
 </head>
 <body>
     <h1 class="titulo">Vive la Alta Gastronomía</h1>
-    <div class="formulario">
-        <form class="registro">
-            <label>Correo</label><br>
-            <input type="text" name="correo" class="campo" id="correo"><br>
-            <label>Contraseña</label><br>
-            <input type="password" name="contraseña" class="campo" id="password"><br>
-            <label class="cuentaNoExist">No hay ninguna cuenta con ese correo</label>
-            <label class="errSesion">Correo o contraseña incorecta</label>
-            <div class="botones">
-                <a class="btn"id="iniciaSesion"><span>Inicia sesión</span></a>
-                <a class="btn" id="registrarse" href="html/registro.html"><span>Registrarse</span></a>
+    <div class="container">
+        <div class="formulario active">
+            <form class="registro">
+                <label>Correo</label><br>
+                <input type="text" name="correo" class="campo" id="correo"><br>
+                <label>Contraseña</label><br>
+                <input type="password" name="contraseña" class="campo" id="password"><br>
+                <label class="cuentaNoExist">No hay ninguna cuenta con ese correo</label>
+                <label class="errSesion">Correo o contraseña incorecta</label>
+                <div class="botones">
+                    <a class="btn"id="iniciaSesion"><span>Inicia sesión</span></a>
+                    <a class="btn" id="registrarse" href="html/registro.html"><span>Registrarse</span></a>
+                </div>
+            </form>
+        </div>
+        <div class="perfil">
+            <div class="carritoBtn" id="contadorCarrito">🛒0</div>
+            <h1 class="bienvenida"></h1>
+            <div class="cursos"></div>
+            <div class="paquetes"></div>
+            <div class="carrito">
+                <h3>Carrito</h3>
+                <div class="btn" id="cerrar">Cerrar</div>
+                <div class="contenido"> </div>
+                <p class="total"></p>
+                <div class="btn" id="vaciar">Vaciar carrito</div><div class="btn" id="pagar">Realizar comprar</div>
             </div>
-        </form>
+        </div>
+        <div class="facturacion">
+            <div class="recibo">
+                <div class="imagen">
+                    <img src="../images/logoNegro.png">
+                </div>
+                <table class="factura">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="pago">
+                <form class="fomaPago">
+                    <label>Numero de tarjeta</label><br>
+                    <input type="text" class="tarjeta" id="tarjeta" maxlength="19"><br>
+                    <label>Fecha exp.(DD/AA)</label> <label class="cv">CVV</label><br>
+                    <input class="fecha" id="mes" type="text">
+                    <input class="fecha" id="anio" type="text">
+                    <input class="cvv" id="cvv" type="text"><br>
+                    <div class="btn" id="finalizar">Finalizar comprar</div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="agradecimiento">
+            <div class="fin">
+                <div class="imagen">
+                    <img src="../images/logoNegro.png">
+                </div>
+                <h1>Muchas gracias por su suscripción</h1>
+            </div>
+            <table class="agenda">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Duracion</th>
+                    <th>Dirección</th>
+                </tr>
+            </table>
+            <div class="btn" id="volver">Volver</div>
+        </div>
     </div>
+   
     <div class="footer">
         <img src="images/logo.png" class="logo">
     </div>
