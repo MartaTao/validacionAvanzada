@@ -29,11 +29,11 @@ function validar_correo(){
         $(".errorCorreo").textContent="El correo introducido no es válido"
         $(".errorCorreo").classList.add("active");
     }else{;
-        let totalCorreos=parseInt(localStorage.getItem("numCuentas"));
+        let totalCorreos=parseInt(sessionStorage.getItem("numCuentas"));
         let i=0;
         let correoExiste=false;
         for(;i<totalCorreos;i++ ){
-            info = JSON.parse(localStorage.getItem(`cuenta${i}`));
+            info = JSON.parse(sessionStorage.getItem(`cuenta${i}`));
             if(email==info.correo){
                 correoExiste=true;
             }
@@ -276,14 +276,14 @@ $("#aceptar").addEventListener('click',()=>{
     if(infoCuenta.metodoPago.numTarjtea!=""&&infoCuenta.metodoPago.mesExp!=""&&infoCuenta.metodoPago.anioExp!=""&&infoCuenta.metodoPago.numCVV!=""){
         $(".recibo").classList.remove("active");
         $('.agradecimiento').classList.add("active");
-        if(localStorage.getItem("numCuentas")==null){
+        if(sessionStorage.getItem("numCuentas")==null){
             contadorCuenta=0;
         }else{
-            contadorCuenta=localStorage.getItem("numCuentas")
+            contadorCuenta=sessionStorage.getItem("numCuentas")
         }
-        localStorage.setItem(`cuenta${contadorCuenta}`,JSON.stringify(infoCuenta));
+        sessionStorage.setItem(`cuenta${contadorCuenta}`,JSON.stringify(infoCuenta));
         contadorCuenta++;
-        localStorage.setItem("numCuentas",`${contadorCuenta}`);
+        sessionStorage.setItem("numCuentas",`${contadorCuenta}`);
     } 
 })
 $("#inicio").addEventListener('click',()=>{

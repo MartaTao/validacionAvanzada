@@ -6,12 +6,12 @@ function $(selector){
 $('#iniciaSesion').addEventListener('click',()=>{
     const correo=$("#correo").value;
     const pass=$("#password").value;
-    let totalCuentas=localStorage.getItem("numCuentas");
+    let totalCuentas=sessionStorage.getItem("numCuentas");
     if(totalCuentas>0){
         let i=0;
         let cuentaEncontrada=false;
         for(;i<totalCuentas;i++){
-            info = JSON.parse(localStorage.getItem(`cuenta${i}`));
+            info = JSON.parse(sessionStorage.getItem(`cuenta${i}`));
             if(correo==info.correo){
                 cuentaEncontrada=true;
             }
@@ -123,8 +123,8 @@ function muestraPerfil(){
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-    if (localStorage.getItem('carrito')){
-        carrito = JSON.parse(localStorage.getItem('carrito'))||[];
+    if (sessionStorage.getItem('carrito')){
+        carrito = JSON.parse(sessionStorage.getItem('carrito'))||[];
         actualizarCarrito()
     }
 })
@@ -184,7 +184,7 @@ function eliminarProducto(id){
     actualizarCarrito();
 }
 function guardarStorage() {
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+    sessionStorage.setItem("carrito", JSON.stringify(carrito));
 }
 $("#contadorCarrito").addEventListener('click',()=>{
     $(".carrito").classList.add("active");
