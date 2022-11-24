@@ -120,6 +120,9 @@ td{
 }
 .facturacion.active{
     display:flex;
+    
+}
+.factura{
     margin-left: 170px;
     background-color: #fff;
     float: left;
