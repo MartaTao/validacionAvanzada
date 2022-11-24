@@ -21,8 +21,9 @@ $('#iniciaSesion').addEventListener('click',()=>{
                 $(".errSesion").classList.add("active");
                 $(".cuentaNoExist").classList.remove("active");
             }else{
-                //location.href="../html/sesionIniciada.html";
-                console.log("Sesion inicada :3");
+                $(".formulario").classList.remove("active");
+                $(".perfil").classList.add("active");
+                muestraPerfil();
             }  
         }else{
             $(".errSesion").classList.remove("active");
@@ -34,95 +35,99 @@ $('#iniciaSesion').addEventListener('click',()=>{
     }
     
 });
-switch (info.suscripcion){
-    case "Basico":
-        $(".bienvenida").textContent="novato";
-    break;
-    case "Iniciado":
-        $(".bienvenida").textContent="iniciado";
-    break;
-    case "Intermedio":
-        $(".bienvenida").textContent="intermedio";
-    break;
-    case "Experto":
-        $(".bienvenida").textContent="experto";
-    break;
-    case "Sibarita":
-        $(".bienvenida").textContent="sibarita";
-    break;
+function muestraPerfil(){
+    switch (info.suscripcion){
+        case "Basico":
+            $(".bienvenida").textContent="novato";
+        break;
+        case "Iniciado":
+            $(".bienvenida").textContent="iniciado";
+        break;
+        case "Intermedio":
+            $(".bienvenida").textContent="intermedio";
+        break;
+        case "Experto":
+            $(".bienvenida").textContent="experto";
+        break;
+        case "Sibarita":
+            $(".bienvenida").textContent="sibarita";
+        break;
+    }
+    cursos.forEach((prod)=>{
+        if(info.suscripcion==prod.nivel){
+            const {id,nivel,nombre,precio,descripcion,img,direccion,duracion,horario}=prod;
+            if(img!=""){
+                $(".cursos").innerHTML += `<div class="curso">
+                    <h3>${nombre}</h3>
+                    <p>Nivel: ${nivel}</p>
+                    <p>Descripcion: ${descripcion}</p>
+                    <img src="${img}">
+                    <p>Direcion: ${direccion}</p>
+                    <p>Duracion: ${duracion}</p>
+                    <p>horario: ${horario}</p>
+                    <p>Precio: ${precio} 2 personas</p>
+                    <div class="btn" id="comprar${id}">Comprar</div>
+                </div>`
+                $(`#comprar${id}`).addEventListener('click',()=>{
+                    aniadeCurso(id);
+                })
+            }else{
+                $(".cursos").innerHTML += `<div class="curso">
+                    <h3>${nombre}</h3>
+                    <p>Nivel: ${nivel}</p>
+                    <p>Descripcion: ${descripcion}</p>
+                    <p>Direcion: ${direccion}</p>
+                    <p>Duracion: ${duracion}</p>
+                    <p>horario: ${horario}</p>
+                    <p>Precio: ${precio}€</p>
+                    <div class="btn" id="comprar${id}">Comprar</div>
+                </div>`
+                $(`#comprar${id}`).addEventListener('click',()=>{
+                    aniadeCurso(id);
+                })
+            }
+        }
+    });
+    if(info.suscripcion!="Basico"){
+        paquetes.forEach((paq)=>{
+            const {id,nombre,precio,descripcion,img,direccion,duracion}=paq;
+            if(img!=""){
+                $(".paquetes").innerHTML += `<div class="paquete">
+                    <h3>${nombre}</h3>
+                    <p>Descripcion: ${descripcion}</p>
+                    <img src="${img}">
+                    <p>Direcion: ${direccion}</p>
+                    <p>Duracion: ${duracion}</p>
+                    <p>Precio: ${precio}</p>
+                    <div class="btn" id="comprar${id}">Comprar</div>
+                </div>`
+                $(`#comprar${id}`).addEventListener('click',()=>{
+                    aniadePaquete(id);
+                })
+            }else{
+                $(".paquetes").innerHTML += `<div class="paquete">
+                    <h3>${nombre}</h3>
+                    <p>Descripcion: ${descripcion}</p>
+                    <p>Direcion: ${direccion}</p>
+                    <p>Duracion: ${duracion}</p>
+                    <p>Precio: ${precio}€</p>
+                    <div class="btn" id="comprar${id}">Comprar</div>
+                </div>`
+                $(`#comprar${id}`).addEventListener('click',()=>{
+                    aniadePaquete(id);
+                })
+            }
+        })
+    }
+    
 }
+
 document.addEventListener('DOMContentLoaded',()=>{
     if (localStorage.getItem('carrito')){
         carrito = JSON.parse(localStorage.getItem('carrito'))||[];
         actualizarCarrito()
     }
 })
-cursos.forEach((prod)=>{
-    if(info.suscripcion==prod.nivel){
-        const {id,nivel,nombre,precio,descripcion,img,direccion,duracion,horario}=prod;
-        if(img!=""){
-            $(".cursos").innerHTML += `<div class="curso">
-                <h3>${nombre}</h3>
-                <p>Nivel: ${nivel}</p>
-                <p>Descripcion: ${descripcion}</p>
-                <img src="${img}">
-                <p>Direcion: ${direccion}</p>
-                <p>Duracion: ${duracion}</p>
-                <p>horario: ${horario}</p>
-                <p>Precio: ${precio} 2 personas</p>
-                <div class="btn" id="comprar${id}">Comprar</div>
-            </div>`
-            $(`#comprar${id}`).addEventListener('click',()=>{
-                aniadeCurso(id);
-            })
-        }else{
-            $(".cursos").innerHTML += `<div class="curso">
-                <h3>${nombre}</h3>
-                <p>Nivel: ${nivel}</p>
-                <p>Descripcion: ${descripcion}</p>
-                <p>Direcion: ${direccion}</p>
-                <p>Duracion: ${duracion}</p>
-                <p>horario: ${horario}</p>
-                <p>Precio: ${precio}€</p>
-                <div class="btn" id="comprar${id}">Comprar</div>
-            </div>`
-            $(`#comprar${id}`).addEventListener('click',()=>{
-                aniadeCurso(id);
-            })
-        }
-    }
-});
-if(info.suscripcion!="Basico"){
-    paquetes.forEach((paq)=>{
-        const {id,nombre,precio,descripcion,img,direccion,duracion}=paq;
-        if(img!=""){
-            $(".paquetes").innerHTML += `<div class="paquete">
-                <h3>${nombre}</h3>
-                <p>Descripcion: ${descripcion}</p>
-                <img src="${img}">
-                <p>Direcion: ${direccion}</p>
-                <p>Duracion: ${duracion}</p>
-                <p>Precio: ${precio}</p>
-                <div class="btn" id="comprar${id}">Comprar</div>
-            </div>`
-            $(`#comprar${id}`).addEventListener('click',()=>{
-                aniadePaquete(id);
-            })
-        }else{
-            $(".paquetes").innerHTML += `<div class="paquete">
-                <h3>${nombre}</h3>
-                <p>Descripcion: ${descripcion}</p>
-                <p>Direcion: ${direccion}</p>
-                <p>Duracion: ${duracion}</p>
-                <p>Precio: ${precio}€</p>
-                <div class="btn" id="comprar${id}">Comprar</div>
-            </div>`
-            $(`#comprar${id}`).addEventListener('click',()=>{
-                aniadePaquete(id);
-            })
-        }
-    })
-}
 
 const aniadeCurso =(id)=>{
     const existe = carrito.some(producto=>producto.id==id);
@@ -219,8 +224,11 @@ $("#finalizar").addEventListener('click',()=>{
         SecureToken:"85779b15-3446-4df6-9b61-f5811d19f78a",
         To:`${info.correo}`,
         From:"martataofernandez.19@campuscamara.es",
-        Subject:"Compra realizada",
-        Body:"Es una prueba"
+        Subject:"Estado de la compra",
+        Body:`Sr/a ${info.nombre},
+        Le infromamos que su compra ha sido realizada exitosamente.
+        Un cordial saludo,
+        Marta`
     })
     $(".facturacion").classList.remove("active");
     $(".agradecimiento").classList.add("active");
@@ -233,10 +241,10 @@ function muestraTicket(){
         fila=document.createElement("tr");
         fila.innerHTML+=`<td>${nombre}</td><td>${duracion}</td><td>${direccion}</td>`
         $(".agenda tbody").appendChild(fila);
-    })
-    carrito.length=[];
+    })   
 }
 $("#volver").addEventListener('click',()=>{
     $(".agradecimiento").classList.remove("active");
     $(".perfil").classList.add("active");
+    carrito.length=[];
 })
