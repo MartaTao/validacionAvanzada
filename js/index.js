@@ -44,7 +44,7 @@ function muestraPerfil(){
             $(".bienvenida").textContent=`Bienvenido iniciado/a ${info.nombre}`;
         break;
         case "Intermedio":
-            $(".bienvenida").textContent="`Bienvenido intermedio/a ${info.nombre}`";
+            $(".bienvenida").textContent=`Bienvenido intermedio/a ${info.nombre}`;
         break;
         case "Experto":
             $(".bienvenida").textContent=`Bienvenido experto/a ${info.nombre}`;

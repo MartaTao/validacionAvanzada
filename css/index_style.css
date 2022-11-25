@@ -153,17 +153,27 @@ td{
     float:right;
     margin-bottom: 20px;
 }
-.btn.comprar{
+.comprar{
+    position: relative;
     width: 80px;
     display: block;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: #000;
-    background-image: linear-gradient(#ecc572, #815500);
+    background: linear-gradient(#ecc572, #815500);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
+.comprar:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: -1;
+  }
 .btn.eliminar{
     width: 80px;
 }

@@ -501,6 +501,20 @@ td{
     background-repeat: no-repeat;
     background-position: right;
 }
+.cvv.incorrecto{
+    border:solid 2px red;
+    background-color: lightcoral;
+    background-image: url("../images/wrong.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.cvv.correcto{
+    border:solid 2px green;
+    background-color: lightgreen;
+    background-image: url("../images/correct.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
 .errorMes{
     display:none;
 }
