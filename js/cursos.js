@@ -4,7 +4,7 @@ let cursos=[
         nivel:"Iniciado",
         nombre:"Cata de vinos",
         descripcion:"¿Te gustaría aprender sobre vinos? Inscribite ahora en este curso para inicarte en la cata de vinos",
-        img:"../images/wrong.png",
+        img:"",
         direccion:"C/ La Moraleja 23",
         duracion:"3 meses",
         horario:"Lunes y Viernes a las 20:30h",

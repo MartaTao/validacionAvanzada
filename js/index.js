@@ -38,49 +38,55 @@ $('#iniciaSesion').addEventListener('click',()=>{
 function muestraPerfil(){
     switch (info.suscripcion){
         case "Basico":
-            $(".bienvenida").textContent="novato";
+            $(".bienvenida").textContent=`Bienvenido ${info.nombre}`;
         break;
         case "Iniciado":
-            $(".bienvenida").textContent="iniciado";
+            $(".bienvenida").textContent=`Bienvenido iniciado/a ${info.nombre}`;
         break;
         case "Intermedio":
-            $(".bienvenida").textContent="intermedio";
+            $(".bienvenida").textContent="`Bienvenido intermedio/a ${info.nombre}`";
         break;
         case "Experto":
-            $(".bienvenida").textContent="experto";
+            $(".bienvenida").textContent=`Bienvenido experto/a ${info.nombre}`;
         break;
         case "Sibarita":
-            $(".bienvenida").textContent="sibarita";
+            $(".bienvenida").textContent=`Bienvenido sibarita ${info.nombre}`;
         break;
     }
     cursos.forEach((prod)=>{
         if(info.suscripcion==prod.nivel){
             const {id,nivel,nombre,precio,descripcion,img,direccion,duracion,horario}=prod;
             if(img!=""){
-                $(".cursos").innerHTML += `<div class="curso">
-                    <h3>${nombre}</h3>
-                    <p>Nivel: ${nivel}</p>
-                    <p>Descripcion: ${descripcion}</p>
-                    <img src="${img}">
-                    <p>Direcion: ${direccion}</p>
-                    <p>Duracion: ${duracion}</p>
-                    <p>horario: ${horario}</p>
-                    <p>Precio: ${precio} 2 personas</p>
-                    <div class="btn" id="comprar${id}">Comprar</div>
+                $(".cursos").innerHTML += `
+                <div class="card">
+                    <div class="curso">
+                        <h3>${nombre}</h3>
+                        <p>Nivel: ${nivel}</p>
+                        <p>Descripcion: ${descripcion}</p>
+                        <img src="${img}">
+                        <p>Direcion: ${direccion}</p>
+                        <p>Duracion: ${duracion}</p>
+                        <p>horario: ${horario}</p>
+                        <p>Precio: ${precio} 2 personas</p>
+                        <div class="btn comprar" id="comprar${id}">Comprar</div>
+                    </div>
                 </div>`
                 $(`#comprar${id}`).addEventListener('click',()=>{
                     aniadeCurso(id);
                 })
             }else{
-                $(".cursos").innerHTML += `<div class="curso">
-                    <h3>${nombre}</h3>
-                    <p>Nivel: ${nivel}</p>
-                    <p>Descripcion: ${descripcion}</p>
-                    <p>Direcion: ${direccion}</p>
-                    <p>Duracion: ${duracion}</p>
-                    <p>horario: ${horario}</p>
-                    <p>Precio: ${precio}€</p>
-                    <div class="btn" id="comprar${id}">Comprar</div>
+                $(".cursos").innerHTML += `
+                <div class="card">
+                    <div class="curso">
+                        <h3>${nombre}</h3>
+                        <p>Nivel: ${nivel}</p>
+                        <p>Descripcion: ${descripcion}</p>
+                        <p>Direcion: ${direccion}</p>
+                        <p>Duracion: ${duracion}</p>
+                        <p>horario: ${horario}</p>
+                        <p>Precio: ${precio}€</p>
+                        <div class="btn comprar" id="comprar${id}">Comprar</div>
+                    </div>
                 </div>`
                 $(`#comprar${id}`).addEventListener('click',()=>{
                     aniadeCurso(id);
@@ -92,26 +98,32 @@ function muestraPerfil(){
         paquetes.forEach((paq)=>{
             const {id,nombre,precio,descripcion,img,direccion,duracion}=paq;
             if(img!=""){
-                $(".paquetes").innerHTML += `<div class="paquete">
-                    <h3>${nombre}</h3>
-                    <p>Descripcion: ${descripcion}</p>
-                    <img src="${img}">
-                    <p>Direcion: ${direccion}</p>
-                    <p>Duracion: ${duracion}</p>
-                    <p>Precio: ${precio}</p>
-                    <div class="btn" id="comprar${id}">Comprar</div>
+                $(".paquetes").innerHTML += `
+                <div class="card">
+                    <div class="paquete">
+                        <h3>${nombre}</h3>
+                        <p>Descripcion: ${descripcion}</p>
+                        <img src="${img}">
+                        <p>Direcion: ${direccion}</p>
+                        <p>Duracion: ${duracion}</p>
+                        <p>Precio: ${precio}</p>
+                        <div class="btn comprar" id="comprar${id}">Comprar</div>
+                    </div>
                 </div>`
                 $(`#comprar${id}`).addEventListener('click',()=>{
                     aniadePaquete(id);
                 })
             }else{
-                $(".paquetes").innerHTML += `<div class="paquete">
-                    <h3>${nombre}</h3>
-                    <p>Descripcion: ${descripcion}</p>
-                    <p>Direcion: ${direccion}</p>
-                    <p>Duracion: ${duracion}</p>
-                    <p>Precio: ${precio}€</p>
-                    <div class="btn" id="comprar${id}">Comprar</div>
+                $(".paquetes").innerHTML += `
+                <div class="card">
+                    <div class="paquete">
+                        <h3>${nombre}</h3>
+                        <p>Descripcion: ${descripcion}</p>
+                        <p>Direcion: ${direccion}</p>
+                        <p>Duracion: ${duracion}</p>
+                        <p>Precio: ${precio}€</p>
+                        <div class="btn comprar" id="comprar${id}">Comprar</div>
+                    </div>
                 </div>`
                 $(`#comprar${id}`).addEventListener('click',()=>{
                     aniadePaquete(id);
@@ -163,11 +175,12 @@ function actualizarCarrito(){
     $(".contenido").innerHTML="";
     carrito.forEach((prod)=>{
         const {nombre,precio,cantidad}=prod;
-        $(".contenido").innerHTML+=`<div class="producto">
+        $(".contenido").innerHTML+=`
+        <div class="producto">
             <p>Producto: ${nombre}</p>
             <p>Precio: ${precio}€</p>
             <p>Cantidad :${cantidad}</p>
-            <div class="btn" id="eliminarProducto${prod.id}">Eliminar</div>
+            <div class="btn eliminar" id="eliminarProducto${prod.id}">Eliminar</div>
         </div>`;
         const boton= document.getElementById(`eliminarProducto${prod.id}`);
         boton.addEventListener('click',()=>{
@@ -246,5 +259,8 @@ function muestraTicket(){
 $("#volver").addEventListener('click',()=>{
     $(".agradecimiento").classList.remove("active");
     $(".perfil").classList.add("active");
+    $(".carrito").classList.remove("active");
     carrito.length=[];
+    actualizarCarrito();
+    guardarStorage();
 })

@@ -196,10 +196,6 @@ textarea{
     position: relative;
     margin-top: 30px;
 }
-.logo{
-    display: block;
-    margin:auto;
-}
 .paquetes{
     display:none;
     justify-content: center;
@@ -456,12 +452,54 @@ td{
     border-radius: 5px;
     border:solid 2px #ecc572;
 }
+.tarjeta.incorrecto{
+    border:solid 2px red;
+    background-color: lightcoral;
+    background-image: url("../images/wrong.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.tarjeta.correcto{
+    border:solid 2px green;
+    background-color: lightgreen;
+    background-image: url("../images/correct.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
 .errorTarjeta{
     display:none;
 }
 .errorTarjeta.active{
     display:flex;
     color:red;
+}
+.mes.incorrecto{
+    border:solid 2px red;
+    background-color: lightcoral;
+    background-image: url("../images/wrong.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.mes.correcto{
+    border:solid 2px green;
+    background-color: lightgreen;
+    background-image: url("../images/correct.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.anio.incorrecto{
+    border:solid 2px red;
+    background-color: lightcoral;
+    background-image: url("../images/wrong.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.anio.correcto{
+    border:solid 2px green;
+    background-color: lightgreen;
+    background-image: url("../images/correct.png");
+    background-repeat: no-repeat;
+    background-position: right;
 }
 .errorMes{
     display:none;
@@ -492,7 +530,12 @@ td{
     width: 300px;
     height: 25px;
 }
-.fecha{
+.mes{
+    width: 70px;
+    height: 20px;
+    margin-right: 5px;
+}
+.anio{
     width: 70px;
     height: 20px;
     margin-right: 5px;
